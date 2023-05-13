@@ -11,6 +11,7 @@ const routeModuleList: Array<RouteRecordRaw> = [
     meta: {
       title: '主控台',
       icon: 'wap-home',
+      auth: false,
     },
     children: [
       {
@@ -63,6 +64,16 @@ const routeModuleList: Array<RouteRecordRaw> = [
         component: () => import('@/views/my/index.vue'),
       },
     ],
+  },
+
+  {
+    path: '/bi/dashboard1',
+    name: 'BiDashboard1',
+    meta: {
+      title: '经营分析',
+      innerPage: true,
+    },
+    component: () => import('@/views/bi/Dashboard1.vue'),
   },
 
   // my innerPage

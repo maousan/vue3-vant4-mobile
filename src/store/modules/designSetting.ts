@@ -3,7 +3,8 @@ import { store } from '@/store';
 import designSetting from '@/settings/designSetting';
 import type { DesignSettingState } from '@/settings/designSetting';
 
-const { darkMode, appTheme, appThemeList, isPageAnimate, pageAnimateType } = designSetting;
+const { darkMode, appTheme, appThemeList, isPageAnimate, pageAnimateType, useNavbarBottom } =
+  designSetting;
 
 export const useDesignSettingStore = defineStore({
   id: 'app-design-setting',
@@ -13,6 +14,7 @@ export const useDesignSettingStore = defineStore({
     appThemeList,
     isPageAnimate,
     pageAnimateType,
+    useNavbarBottom,
   }),
   getters: {
     getDarkMode(): 'light' | 'dark' {
@@ -29,6 +31,9 @@ export const useDesignSettingStore = defineStore({
     },
     getPageAnimateType(): string {
       return this.pageAnimateType;
+    },
+    getUseNavbarBottom(): boolean {
+      return this.useNavbarBottom;
     },
   },
   actions: {

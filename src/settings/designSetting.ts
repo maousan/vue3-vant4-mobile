@@ -11,6 +11,7 @@ export interface DesignSettingState {
   isPageAnimate: boolean;
   // 路由动画类型
   pageAnimateType: string;
+  useNavbarBottom: boolean;
 }
 
 export const appThemeList: string[] = [
@@ -46,6 +47,8 @@ const setting: DesignSettingState = {
   isPageAnimate: true,
   //路由动画类型
   pageAnimateType: 'zoom-fade',
+  //使用navbar-bottom
+  useNavbarBottom: false,
 };
 
 export default setting;

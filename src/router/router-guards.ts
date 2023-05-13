@@ -22,7 +22,7 @@ export function createRouterGuards(router: Router) {
     }
 
     // Whitelist can be directly entered
-    if (whitePathList.includes(to.path as PageEnum)) {
+    if (whitePathList.includes(to.path as PageEnum) || !to.meta.auth) {
       next();
       return;
     }

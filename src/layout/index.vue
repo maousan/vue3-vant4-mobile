@@ -17,7 +17,7 @@
         <component v-else :is="Component" :key="route.fullPath" />
       </template>
     </routerView>
-    <van-tabbar route class="tabbar">
+    <van-tabbar v-if="getUseNavbarBottom" route class="tabbar">
       <van-tabbar-item
         fixed
         replace
@@ -35,14 +35,17 @@
   import { computed } from 'vue';
   import { useRoute } from 'vue-router';
   import { useRouteStore } from '@/store/modules/route';
+  import { useDesignSettingStore } from '@/store/modules/designSetting';
+  import { updateDarkSign } from '@/theme';
 
+  const designStore = useDesignSettingStore();
   const routeStore = useRouteStore();
   // 需要缓存的路由组件
   const keepAliveComponents = computed(() => routeStore.keepAliveComponents);
   const currentRoute = useRoute();
 
   const getTitle = computed(() => currentRoute.meta.title as string);
-
+  const getUseNavbarBottom = computed(() => designStore.getUseNavbarBottom as boolean);
   // 菜单
   const getMenus = computed(() =>
     routeStore.menus.filter((item) => {
