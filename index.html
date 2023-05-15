@@ -7,6 +7,12 @@
     <title>
       <%= title %>
     </title>
+    <script type="text/javascript" src="https://appx/web-view.min.js"></script>
+    <script>
+      if (navigator.userAgent.indexOf('AliApp') > -1) {
+        document.writeln('<script src="https://appx/web-view.min.js"' + '>' + '<' + '/' + 'script>');
+      }
+    </script>
   </head>
   <body>
     <div id="app">

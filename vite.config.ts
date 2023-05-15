@@ -106,13 +106,16 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
           // 注入全局 less 变量
           additionalData: `@import "src/styles/var.less";`,
         },
+        scss: {
+          additionalData: `@import "@nutui/nutui/dist/styles/variables.scss";`
+        }
       },
     },
 
     server: {
       host: true,
       port: VITE_PORT,
-      proxy: createProxy(VITE_PROXY),
+      // proxy: createProxy(VITE_PROXY),
       // proxy: {
       //     '/api': {
       //         target: '',
@@ -120,6 +123,14 @@ export default ({ command, mode }: ConfigEnv): UserConfig => {
       //         rewrite: (path) => path.replace(/^\/api/, '/api/v1')
       //     }
       // }
+      proxy: {
+        '/api': {
+          target: env.VITE_API_URL,
+          ws: false,
+          changeOrigin: true,
+          rewrite: (path) => path.replace(/^\/api/, '')
+        }
+      }
     },
 
     optimizeDeps: {

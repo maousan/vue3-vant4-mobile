@@ -11,6 +11,7 @@ import { configMockPlugin } from './mock';
 import { configCompressPlugin } from './compress';
 import { configVisualizerConfig } from './visualizer';
 import { configSvgIconsPlugin } from './svgSprite';
+import NutUIResolver from '@nutui/nutui/dist/resolver';
 
 /**
  * 配置 vite 插件
@@ -31,10 +32,10 @@ export function createVitePlugins(viteEnv: ViteEnv, isBuild: boolean, prodMock: 
     vue(),
     // support name https://github.com/vbenjs/vite-plugin-vue-setup-extend
     vueSetupExtend(),
-    // 按需引入VantUi且自动创建组件声明
+    // 按需引入VantUi且自动创建组件声明、NutUI 组件
     Components({
       dts: true,
-      resolvers: [VantResolver()],
+      resolvers: [VantResolver(), NutUIResolver()],
       types: [],
     }),
   ];

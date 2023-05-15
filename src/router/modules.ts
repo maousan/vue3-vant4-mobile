@@ -73,7 +73,7 @@ const routeModuleList: Array<RouteRecordRaw> = [
       title: '经营分析',
       innerPage: true,
     },
-    component: () => import('@/views/bi/Dashboard1.vue'),
+    component: () => import('@/views/bi/DashboardLayout1.vue'),
   },
 
   // my innerPage
