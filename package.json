@@ -1,11 +1,11 @@
 {
-  "name": "vue3-vant4-mobile",
+  "name": "vue3-mobile-app",
   "private": true,
-  "version": "0.0.1",
+  "version": "1.0.0",
   "author": {
-    "name": "xiangshu233",
-    "email": "xiangshu233@outlook.com",
-    "url": "https://github.com/xiangshu233"
+    "name": "maou",
+    "email": "dehang@corner-s.com",
+    "url": "https://gitee.com/maou137"
   },
   "scripts": {
     "preinstall": "npx only-allow pnpm",

@@ -60,9 +60,12 @@
         tooltip: {
           trigger: 'axis',
           axisPointer: {
-            // Use axis to trigger tooltip
-            type: 'shadow', // 'shadow' as default; can also be 'line' or 'shadow'
-          },
+            type: 'cross'
+          }
+        },
+        legend: {
+          data: ['营业额', '客流量'],
+          top: '30'
         },
         toolbox: {
           show: true,
@@ -81,10 +84,9 @@
           left: 'center',
           text: '门店销售趋势',
         },
-        legend: {},
         grid: {
-          left: '1%',
-          right: '1%',
+          left: '0',
+          right: '5%',
           bottom: '3%',
           containLabel: true,
         },
@@ -93,41 +95,42 @@
           align: 'center',
           position: 'bottom',
           nameLocation: 'middle',
-          data: dataCfg.fields,
-          markPoint: {
-            data: [{
-              type: 'max',
-              name: 'Max',
-            }, {
-              type: 'min',
-              name: 'Min',
-            }],
+          data: dataCfg.fields
+        },
+        yAxis: [
+          {
+            alignTicks: true,
+            name: '营业额',
+            position: 'left',
+            axisLine: {
+              show: true
+            },
           },
-        },
-        yAxis: {
-          type: 'value',
-        },
+          {
+            alignTicks: true,
+            name: '客流量',
+            position: 'right',
+            axisLine: {
+              show: true
+            },
+          }
+        ],
         series: [
           {
             type: 'line',
-            showSymbol: false,
+            smooth: true,
+            yAxisIndex: 0,
           },
+          {
+            type: 'line',
+            smooth: true,
+            yAxisIndex: 1
+          }
         ],
       });
 
       function reload(): void {
-        loading.value = true;
-        props.loadData().then(resp => {
-          if (resp.code == 200) {
-            const sortedData1 = lodash.sortBy(resp.data, (o) => o.totalAmount);
-            //营业额
-            dataCfg.amounts = sortedData1.map(item => item.totalAmount);
-            dataCfg.fields = resp.data.map(item => item.reportTime + '点');
-            options.value.series[0].data = dataCfg.amounts;
-          }
-        }).finally(() => {
-          loading.value = false;
-        });
+        refresh(undefined);
       }
 
 
@@ -135,10 +138,10 @@
         loading.value = true;
         props.loadData().then(resp => {
           if (resp.code == 200) {
-            const sortedData1 = lodash.sortBy(resp.data, (o) => o.totalAmount);
+            const sortedData1 = lodash.sortBy(resp.data, (o) => o.reportTime);
             //营业额
-            dataCfg.amounts = sortedData1.map(item => item.totalAmount);
-            options.value.series[0].data = dataCfg.amounts;
+            options.value.series[0].data = sortedData1.map(item => item.totalAmount)
+            options.value.series[1].data = sortedData1.map(item => item.totalCustomers)
           }
         }).finally(() => {
           if (callback) {

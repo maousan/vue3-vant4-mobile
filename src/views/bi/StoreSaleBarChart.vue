@@ -59,7 +59,7 @@
     },
     grid: {
       left: '1%',
-      right: '1%',
+      right: '5%',
       bottom: '3%',
       containLabel: true,
     },
@@ -72,6 +72,10 @@
       align: 'center',
       position: 'bottom',
       nameLocation: "middle",
+      axisLabel: {
+        interval: 0,
+        rotate: 30
+      },
     },
     yAxis: {
       type: 'category',
@@ -106,8 +110,8 @@
       },
     },
     grid: {
-      left: '1%',
-      right: '1%',
+      left: '0',
+      right: '5%',
       bottom: '3%',
       containLabel: true,
     },
@@ -144,8 +148,8 @@
       },
     },
     grid: {
-      left: '1%',
-      right: '1%',
+      left: '0',
+      right: '5%',
       bottom: '3%',
       containLabel: true,
     },

@@ -5,6 +5,9 @@
         <van-tab title="经营概况">
           <Dashboard1/>
         </van-tab>
+        <van-tab title="会员概况">
+          <Dashboard2/>
+        </van-tab>
         <van-tab title="商品排行">
           <div class="w-full">
             <van-empty description="开发中">
@@ -24,6 +27,7 @@
 <script setup lang="ts">
   import dayjs from 'dayjs';
   import Dashboard1 from './Dashboard1.vue';
+  import Dashboard2 from './Dashboard2.vue';
   import { ref } from 'vue';
   const activeTab = ref(0);
   const onClickTab = ({ name, title }) => {

@@ -9,7 +9,7 @@ export const ErrorPageRoute: RouteRecordRaw = {
   name: PageEnum.ERROR_PAGE_NAME,
   component: Layout,
   meta: {
-    title: 'ErrorPage',
+    title: '页面不存在',
     hideBreadcrumb: true,
   },
   children: [
@@ -18,7 +18,7 @@ export const ErrorPageRoute: RouteRecordRaw = {
       name: 'ErrorPageSon',
       component: () => import('@/views/exception/404.vue'),
       meta: {
-        title: 'ErrorPage',
+        title: '页面不存在',
         hideBreadcrumb: true,
       },
     },

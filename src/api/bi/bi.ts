@@ -37,7 +37,18 @@ function getStoreTradeTrendBusinessAnalysis(params: any) {
   });
 }
 
+function getMemberBusinessAnalysis(params: any) {
+  return http.request<BasicResponseModel>({
+    url: `/bi/business_member_analysis`,
+    method: 'get',
+    params,
+  }, {
+    isTransformResponse: false,
+  });
+}
+
 export default {
+  getMemberBusinessAnalysis,
   getAllBusinessAnalysis,
   getStoreBusinessAnalysis,
   getStoreTradeTrendBusinessAnalysis
